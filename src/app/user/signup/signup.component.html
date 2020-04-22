@@ -1,0 +1,32 @@
+
+<div class="login">
+    <h1 class="welcome">Welcome to <br><span>Spotify</span></h1>
+
+    <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+
+        <mat-card>
+
+            <p class="sign">Sign up<span>to your Digiedger</span></p>
+
+            <mat-form-field appearance="fill">
+
+                <mat-label>Email address</mat-label>
+
+                <input matInput placeholder="name@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </mat-card>
+        <button class="signin-btn" type="submit" mat-flat-button>Sign Up</button>
+    </form>
+    
+</div>

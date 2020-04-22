@@ -1,0 +1,19 @@
+
+<app-sidebar></app-sidebar>
+<main>
+    <div class="container-fluid row">
+        <div class="col-12">
+            <app-header></app-header>
+        </div>
+    <div class="col-md-12">
+        <p>Email : {{userData.email}} </p>
+        <p>User Type : {{userData.userType}} </p>
+        <!-- <p>Company : Smazee </p>
+        <p>GSTIN : GF6S00086HT </p>
+        <p>State : TN </p>
+        <p>Phone : +044 235 6582 </p>
+        <p>Address : No:6,Kalamani St, Karthikeyan Nagar, Chennai, Tamil Nadu - 600095</p> -->
+        <button mat-raised-button (click)="logout()">Logout</button>
+    </div>
+    </div>
+</main>

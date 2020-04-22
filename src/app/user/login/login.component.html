@@ -1,0 +1,47 @@
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-5 login-left">
+            <h1 class="welcome">Welcome to <br><span>Digedger</span></h1>
+        </div>
+
+        <div class="col-md-7 login-right">
+
+            <div class="row">
+
+                <mat-card>
+
+                    <form #signinForm="ngForm" (ngSubmit)="onSubmit(signinForm)">
+
+                        <p class="sign">Sign in<span>to your Digiedger</span></p>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email address</mat-label>
+                            <input matInput placeholder="name@example.com" [formControl]="email" [(ngModel)]="emailid" name="emailid" required>
+                            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill">
+
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" name="password" name="password" [(ngModel)]="password">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <button type="submit" class="signin-btn" mat-flat-button>Sign in</button>
+
+                        <a href="#" class="forgot">Forget Password?</a>
+                    </form>
+                </mat-card>
+
+                <!-- <a routerLink="/signup" class="contact">Don't have a account? Contact our team</a> -->
+                <!-- <a (click)="openBrowser()" class="contact">Don't have a account? Contact our team</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+  

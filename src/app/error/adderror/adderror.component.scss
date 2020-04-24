@@ -1,0 +1,56 @@
+mat-toolbar{
+    background: transparent linear-gradient(67deg, #0F5FFF 0%, #0F6EFF 100%) 0% 0% no-repeat padding-box;
+    color: #F8F8F8;
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    // border-bottom-right-radius: 25px;
+    // border-bottom-left-radius: 25px;
+}
+.spacer {
+    flex: 1 1 auto;
+}
+.profile-icon{
+    width: 38px;
+    height: 38px;
+    // background: #F8F8F8;
+    border-radius: 12px;
+    mat-icon{
+        padding: 7px;
+        color: #C3D1E0;
+    }
+}
+
+
+mat-form-field{
+    width: 100%;
+}
+
+button.btn-submit{
+    background: #01CC96;
+    color: white;
+    width: 48%;
+    margin: 2px;
+}
+.btn-cancel{
+    width: 48%;
+    margin: 2px;
+}
+
+.mat-radio-button{
+    margin: 5px;
+}
+.btn-blue{
+    background: #0F5FFF;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table, th, td {
+  border: 0.2px solid #333;
+}
+table td{
+    font-size: 12px;
+    padding: 4px 2px;
+}

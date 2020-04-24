@@ -1,0 +1,63 @@
+mat-form-field{
+    background: transparent;
+}
+div.login{
+    min-height: calc(100vh -60px );
+    background: linear-gradient( #0F5FFF 0%, #0F6EFF 40% , white 40%);
+    margin: 0;
+    padding: 30px;
+    .welcome{
+        padding: 30px 0;
+        font-weight: 100;
+        color: #fff;
+        font-size: 20px;
+        span{
+            font-size: 36px;
+            font-weight: 600;
+        }
+    }
+    mat-card{
+        padding: 25px;
+    }
+    .sign{
+        color: #0F6EFF;
+        font-size: 26px;
+        font-weight: 600;
+        span{
+            display: block;
+            font-weight: 100;
+            font-size: 12px;
+            font-weight: 300;
+        }
+    }
+    mat-form-field{
+        *{
+            background: none;
+        }
+        background: none;
+        width: 100%;
+    }
+    .forgot{
+        color: #2C86FCB8;
+        font-size: 12px;
+        display: block;
+        font-weight: 100;
+        text-align: center;
+    }
+    .contact{
+        padding: 30px;
+        margin: auto;
+        display: block;
+        font-size: 10px;
+        color: #AAB0BB;
+        text-align: center;
+    }
+    .signin-btn{
+        margin: 30px auto;
+        padding: 10px;
+        background: #01CC96;
+        color: #fff;
+        width: 100%;
+        font-size: 20px;
+    }
+}

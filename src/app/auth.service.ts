@@ -13,6 +13,9 @@ import * as admin from "firebase-admin";
 import { User } from './app';
 import { formatDate } from '@angular/common';
 
+import { Errorlst } from './app';
+import { from } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +32,12 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private router: Router) {
 
-    this.errorRef = dbs.list('/expense');
+    this.errorRef = dbs.list('/error');
     this.userRef = dbs.list('/user');
+  }
+
+  createError(err: Errorlst) {
+    return this.errorRef.push(err).key;
   }
 
   get isLoggedIn(): boolean {

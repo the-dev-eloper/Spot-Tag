@@ -1,0 +1,37 @@
+<div class="login">
+    <h1 class="welcome">Welcome to <br><span>Digedger</span></h1>
+    
+    <div [hidden]="otpsent">
+    <form #signinForm="ngForm" (ngSubmit)="onSubmit(otpForm)">
+    <mat-card>
+        <p class="sign">Sign in<span>to your Digiedger</span></p>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone No</mat-label>
+            <input type="tel" matInput [formControl]="phone" [(ngModel)]="phoneno" name="phoneno" required>
+          </mat-form-field>        
+    </mat-card>
+    <button type="submit" class="signin-btn" mat-flat-button> 
+        <mat-spinner width="25px" class="mx-auto" *ngIf="isLoading"></mat-spinner>
+        <span  *ngIf="!isLoading"> Get OTP</span></button>
+    </form>
+    </div>
+
+    <div [hidden]="!otpsent">
+    <form #otpForm="ngForm" (ngSubmit)="verifyLoginCode()">
+    <mat-card>
+        <p class="sign">Sign in<span>to your Digiedger</span></p>
+        <mat-form-field appearance="fill">
+            <mat-label>OTP</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'"  name="password" [(ngModel)]="verificationCode">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+    </mat-card>
+    <!-- <a routerLink="/signup" class="contact">Don't have a account? Contact our team</a> -->
+    <a (click)="openBrowser()" class="contact">Don't have a account? Contact our team</a>
+    <button type="submit" class="signin-btn" mat-flat-button>Sign in</button>
+    </form>
+    </div>
+    <div id="recaptcha-container"></div>
+</div>

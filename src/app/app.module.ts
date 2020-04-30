@@ -22,6 +22,7 @@ import { PhoneloginComponent, VerifyDialog } from './user/phonelogin/phonelogin.
 import { AuthService } from './auth.service';
 import { DynamicScriptLoaderService } from './dynamic-script-loader.service';
 import { from } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { from } from 'rxjs';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService,

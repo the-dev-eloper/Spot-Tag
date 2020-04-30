@@ -1,0 +1,45 @@
+.search{
+    width: 100%;
+    mat-icon{
+       // color: #6798CC;
+    }
+    input{
+       width: calc(100% - 60px);
+       border-radius: 6px;
+       background: #dfeafb;
+       font-size: 1rem;
+       padding: 10px;
+       border: 0;
+       outline: none;
+       &::placeholder{
+          color: #6798CC;
+       }
+    }
+ }
+ mat-card{
+    margin-top: 10px ;
+    mat-card-subtitle{
+       width: 100%;
+       color: #345FA0;
+       font-size: 18px;
+       mat-icon{
+         font-size: 14px;
+         height: 14px;
+         width: 14px;
+         float: right;
+       }
+     }
+     mat-card-title{
+      color: #345FA0;
+      font-size: 13px;
+      font-weight: 300;
+   }
+   .money-green{
+      color: #01CC96;
+      font-size: 18px;
+      float: right;
+   }
+ }
+mat-spinner{
+   margin-top: 40%;
+}

@@ -1,0 +1,35 @@
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    table, th, td {
+        border: 0.2px solid #333;
+    }
+    table td{
+        font-size: 12px;
+        padding: 4px 2px;
+    }
+    @media print {
+        .float-right{
+            float: right;
+            font-weight: 500;
+        }
+    }
+</style>
+
+<div id="" *ngIf="err != null">
+
+    <h1>
+        Error  <span>{{err?.errno}}</span>
+    </h1>
+
+    <p>Hashtag - <b># {{err?.hashtag }}</b></p>
+
+    <p>Date - {{err?.created | date: "dd MMM y":'IST'}}</p>
+
+    <p>Name - {{err?.errname}}</p>
+
+    <p>Type - {{err?.errtype}}</p>
+</div>

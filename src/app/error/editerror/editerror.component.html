@@ -1,1 +1,55 @@
-<p>editerror works!</p>
+
+<mat-toolbar>
+    <h1>Edit Error</h1>
+    <div class="spacer"></div>
+    <a routerLink="/error" class="profile-icon"><mat-icon aria-hidden="false" aria-label="Profile">close</mat-icon></a>
+</mat-toolbar>
+
+<main class="p-2">
+
+    <form  [formGroup]="editErrorForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+
+            <div class="form-group">
+    
+                <mat-form-field appearance="fill">
+
+                    <mat-label for="errname">Error Name</mat-label>
+                    <input matInput type="text" id="errname" required [(ngModel)]="error.errname" formControlName="errname">
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+    
+                <mat-form-field appearance="fill">
+
+                    <mat-label for="hashtag">Hashtag</mat-label>
+                    <input matInput type="text" id="hashtag" required [(ngModel)]="error.hashtag" formControlName="hashtag">
+                </mat-form-field>
+            </div>
+
+            <!-- Need to add editing parts fr Description and Solution -->
+
+            <div class="form-group">
+
+                <mat-form-field appearance="fill">
+
+                    <mat-label for="errortype">Error Type</mat-label>
+
+                    <mat-select [(ngModel)]="error.errortype" id="errortype" formControlName="errortype" required>
+                        <mat-option *ngFor="let type of totalType" [value]="type.name">
+                            {{type.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <a mat-stroked-button routerLink="/error" class="btn-cancel" color="warn">Cancel</a>
+
+            <button mat-stroked-button type="submit" class="btn-submit">Update</button>
+        </div>
+    
+    </form>
+</main>
+<!-- <app-footer></app-footer> -->

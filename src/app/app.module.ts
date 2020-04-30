@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent, PrintErrComp } from './error/error.component';
 import { AdderrorComponent } from './error/adderror/adderror.component';
 import { LoginComponent } from './user/login/login.component';
 import { ProfileComponent } from './user/profile/profile.component';
@@ -52,6 +52,6 @@ import { from } from 'rxjs';
     DynamicScriptLoaderService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [VerifyDialog]
+  entryComponents: [VerifyDialog, PrintErrComp]
 })
 export class AppModule { }

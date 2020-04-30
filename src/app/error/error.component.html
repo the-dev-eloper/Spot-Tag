@@ -1,1 +1,61 @@
-<p>error works!</p>
+
+<app-header></app-header>
+
+<main class="p-1">
+
+    <div class="search">
+
+        <input type="text" placeholder="Search Error" [(ngModel)]="filterValue" (keyup)="applyFilter($event)">
+
+        <div style="display: initial;">
+
+            <input matInput [satDatepicker]="picker" [(ngModel)]="dateRange" (dateChange)="filterDates()" style="display: none;">
+            <sat-datepicker touchUi #picker [rangeMode]="true"></sat-datepicker>
+            <button mat-icon-button (click)="picker.open()" ><mat-icon>filter_list</mat-icon></button>
+        </div>
+    </div>
+    
+    <mat-spinner class="mx-auto" *ngIf="isLoading"></mat-spinner>
+        
+    <div *ngFor="let item of dataSource.filteredData; let i = index">
+
+        <div class="swipe-element">
+
+            <div class="swipe-back">
+
+                <button class="view" (click)="viewErr(item)"><mat-icon>visibility</mat-icon></button>
+                <button class="edit" (click)="editErr(item.key)"><mat-icon>edit</mat-icon></button>
+                <button class="delete" (click)="deleteErr(item.key)"><mat-icon>delete</mat-icon></button>
+            </div>
+
+            <div class="swipe-front">
+
+                <mat-card>
+
+                    <mat-card-subtitle>
+                        
+                        {{item.errortype}}
+                        
+                        <small class="small float-right">
+                            {{item.created | date : "dd MMM y":'IST' }}
+                        </small>
+                    </mat-card-subtitle>
+
+                    <mat-card-title>
+                        
+                        {{item.errorname}}
+                        
+                        <span class="float-right money-green">&#8377;
+                            {{ item.desc }}
+                        </span>
+                    </mat-card-title>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+    <a mat-fab routerLink="./adderror" class="btn-float-new">
+        <mat-icon>add</mat-icon>
+    </a>
+</main>
+<app-footer></app-footer>

@@ -8,12 +8,11 @@ import { AngularFireDatabase, AngularFireList, AngularFireAction } from '@angula
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import * as firebase from 'firebase';
-import * as admin from "firebase-admin";
 
 import { User } from './app';
 import { formatDate } from '@angular/common';
 
-import { Errorlst } from './app';
+import { Error } from './app';
 import { from } from 'rxjs';
 
 
@@ -23,21 +22,21 @@ import { from } from 'rxjs';
 export class AuthService {
 
   currentUser: User;
+  companyId: string;
 
   errorRef: AngularFireList<Error> = null;
   userRef: AngularFireList<User> ;
+
 
   constructor(private http: HttpClient,
     private dbs: AngularFireDatabase,
     private afAuth: AngularFireAuth,
     private router: Router) {
 
-    this.errorRef = dbs.list('/error');
-    this.userRef = dbs.list('/user');
-  }
+      this.companyId = this.getUserData()?this.getUserData().companyid:'';
 
-  createError(err: Errorlst) {
-    return this.errorRef.push(err).key;
+      this.errorRef = dbs.list('/error', ref => ref.orderByChild('companyid').equalTo(this.companyId));
+      this.userRef = dbs.list('/user');
   }
 
   get isLoggedIn(): boolean {
@@ -121,6 +120,19 @@ export class AuthService {
     return res;
   }
 
+  async getCompanyid(id: string){
+    var res= this.dbs.database.ref('/user').child(`/${id}`).once('value').then( function(snapshot) {
+      return snapshot.val().companyid;
+    });
+    return res;
+  }
+  async getCompanyDetails(companyid: string){
+    var res= this.dbs.database.ref('/company').child(`/${companyid}`).once('value').then( function(snapshot) {
+      return snapshot.val();
+    });
+    return res;
+  }
+
   getUserData(){
     
     const user = JSON.parse(localStorage.getItem('userData'));
@@ -128,16 +140,7 @@ export class AuthService {
   }
 
   createCustomToken(uid: any){
-    // var adminFire = admin.initializeApp(environment.firebase);
-
-    // adminFire.auth().createCustomToken(uid)
-    // .then(function(customToken) {
-    //   // Send token back to client
-    //   console.log('Custom token created:', customToken);
-    // })
-    // .catch(function(error) {
-    //   console.log('Error creating custom token:', error);
-    // });
+    
   }
   
   testtemp =[];
@@ -184,6 +187,40 @@ export class AuthService {
   }
   reqResetPassword(email: string){
     console.log(this.afAuth.auth.sendPasswordResetEmail(email));
+  }
+
+  // Error Module
+
+  getErrorList(): AngularFireList<Error> {
+    return this.errorRef;
+  }
+
+  createError(error: Error): void {
+    this.error.push(error);
+  }
+
+  async editError(key: string) {
+    this.x = this.dbs.database.ref('/error/').child(key).once('value').then(function(dts) {
+      return dts.val();
+    });
+    return this.x;
+  }
+
+  updateError(key: string,exp: Object) {
+    this.dbs.database.ref('/error/').child(key).update(exp);
+  }
+
+  deleteError(key: string) {
+
+    this.dbs.database.ref('/error/').child(key).remove()
+    .then(function() {
+      console.log("Remove succeeded.");
+      return true;
+    })
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message)
+      return false;
+    });
   }
 }
 

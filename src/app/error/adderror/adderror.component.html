@@ -7,119 +7,107 @@
 
 <main class="p-2">
 
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="errorForm" (ngSubmit)="onSubmit()">
 
-        <div [formGroup]="errorForm">
+        <!-- Hashtag -->
 
-            <!-- Error Number -->
+        <div class="form-group">
 
-            <div class="form-group">
+            <mat-form-field appearance="fill">
 
-                <mat-label for="errno">
-                    Error Number:
-                </mat-label>
-                
-                <b>{{purchase.errno}}</b>
-            </div>
+                <mat-label for="hashtag">Hashtag</mat-label>
 
-            <br>
+                <input matInput type="text" id="hashtag" [(ngModel)]="error.hashtag" formControlName="hashtag">
+            </mat-form-field>
+        </div>
 
-            <!-- Hashtag -->
+        <!-- Error Details -->
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill">
 
-                    <mat-label for="hashtag">Hashtag</mat-label>
+                <mat-label for="errname">Error Name</mat-label>
 
-                    <input matInput type="text" id="hashtag" [(ngModel)]="err.hashtag" formControlName="hashtag">
-                </mat-form-field>
-            </div>
+                <input type="text" matInput [matAutocomplete]="auto" id="errname" required [(ngModel)]="error.name" formControlName="errname">
 
-            <!-- Error Details -->
+                <button mat-button *ngIf="error.name" matSuffix mat-icon-button aria-label="Clear" (click)="clearError()">
 
-            <div class="form-group">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
 
-                <mat-form-field appearance="fill">
+        <!-- Error Desc -->
 
-                    <mat-label for="errname">Error Name</mat-label>
+        <div class="form-group">
 
-                    <input type="text" matInput [matAutocomplete]="auto" id="errname" required [(ngModel)]="err.name" formControlName="errname">
+            <mat-form-field appearance="fill">
 
-                    <button mat-button *ngIf="err.name" matSuffix mat-icon-button aria-label="Clear" (click)="clearError()">
+                <mat-label>Font size</mat-label>
 
-                        <mat-icon>close</mat-icon>
-                    </button>
-                </mat-form-field>
-            </div>
+                <mat-select #fontSize value="16px" (selectionChange)="triggerResize()">
+                    <mat-option value="10px">10px</mat-option>
+                    <mat-option value="12px">12px</mat-option>
+                    <mat-option value="14px">14px</mat-option>
+                    <mat-option value="16px">16px</mat-option>
+                    <mat-option value="18px">18px</mat-option>
+                    <mat-option value="20px">20px</mat-option>
+                </mat-select>
+            </mat-form-field>
 
-            <!-- Error Desc -->
+            <mat-form-field [style.fontSize]="fontSize.value">
 
-            <div class="form-group">
+                <mat-label>Error Description</mat-label>
 
-                <mat-form-field appearance="fill">
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
 
-                    <mat-label>Font size</mat-label>
+                </textarea>
+            </mat-form-field>
+        </div>
 
-                    <mat-select #fontSize value="16px" (selectionChange)="triggerResize()">
-                        <mat-option value="10px">10px</mat-option>
-                        <mat-option value="12px">12px</mat-option>
-                        <mat-option value="14px">14px</mat-option>
-                        <mat-option value="16px">16px</mat-option>
-                        <mat-option value="18px">18px</mat-option>
-                        <mat-option value="20px">20px</mat-option>
-                    </mat-select>
-                </mat-form-field>
+        <!-- Error Sol. -->
 
-                <mat-form-field [style.fontSize]="fontSize.value">
+        <div class="form-group">
 
-                    <mat-label>Error Description</mat-label>
+            <mat-form-field appearance="fill">
 
-                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+                <mat-label>Font size</mat-label>
 
-                    </textarea>
-                </mat-form-field>
-            </div>
+                <mat-select #fontSize value="16px" (selectionChange)="triggerResize()">
+                    <mat-option value="10px">10px</mat-option>
+                    <mat-option value="12px">12px</mat-option>
+                    <mat-option value="14px">14px</mat-option>
+                    <mat-option value="16px">16px</mat-option>
+                    <mat-option value="18px">18px</mat-option>
+                    <mat-option value="20px">20px</mat-option>
+                </mat-select>
+            </mat-form-field>
 
-            <!-- Error Sol. -->
+            <mat-form-field [style.fontSize]="fontSize.value">
 
-            <div class="form-group">
+                <mat-label>Error Solution</mat-label>
 
-                <mat-form-field appearance="fill">
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
 
-                    <mat-label>Font size</mat-label>
+                </textarea>
+            </mat-form-field>
+        </div>
 
-                    <mat-select #fontSize value="16px" (selectionChange)="triggerResize()">
-                        <mat-option value="10px">10px</mat-option>
-                        <mat-option value="12px">12px</mat-option>
-                        <mat-option value="14px">14px</mat-option>
-                        <mat-option value="16px">16px</mat-option>
-                        <mat-option value="18px">18px</mat-option>
-                        <mat-option value="20px">20px</mat-option>
-                    </mat-select>
-                </mat-form-field>
+        <!-- type -->
 
-                <mat-form-field [style.fontSize]="fontSize.value">
+        <p>Error Type</p>
 
-                    <mat-label>Error Description</mat-label>
+        <div class="form-group">
 
-                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
-
-                    </textarea>
-                </mat-form-field>
-            </div>
-
-            <!-- type -->
-
-            <p>Error Type</p>
-
-            <div class="form-group">
-                <mat-radio-group [(ngModel)]="errlist.errtype" formControlName="errtype">
-                    <mat-radio-button *ngFor="let mode of modes" [value]="mode">
-                        {{mode}}
-                    </mat-radio-button>                
-                </mat-radio-group>
-            </div>
+            <mat-form-field appearance="fill">
+                <mat-label for="errortype">Error Type</mat-label>
+                <mat-select [(ngModel)]="error.errortype" id="errortype" formControlName="errortype" required>
+                    <mat-option *ngFor="let type of totalType" [value]="type.name">
+                        {{type.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
 
         <a mat-stroked-button routerLink="/error" class="btn-cancel" color="warn">Cancel</a>

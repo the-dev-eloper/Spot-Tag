@@ -12,7 +12,7 @@ export interface User {
   emailVerified: boolean;
 }
 
-export interface Error {
+export class Error {
 
   errno: number;
   hashtag: string;

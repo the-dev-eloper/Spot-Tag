@@ -7,8 +7,13 @@ import { Error } from 'src/app/app';
 import { formatDate } from '@angular/common';
 import * as moment from 'moment';
 
+// import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-editerror',
@@ -16,7 +21,8 @@ import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-mome
   styleUrls: ['./editerror.component.scss'],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    // {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    {provide: MAT_DATE_FORMATS, useValue: MatMomentDateModule},
   ],
 })
 

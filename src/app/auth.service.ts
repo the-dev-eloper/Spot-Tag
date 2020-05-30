@@ -21,6 +21,8 @@ import { from } from 'rxjs';
 })
 export class AuthService {
 
+  error: any;
+
   currentUser: User;
   companyId: string;
 
@@ -31,6 +33,7 @@ export class AuthService {
   constructor(private http: HttpClient,
     private dbs: AngularFireDatabase,
     private afAuth: AngularFireAuth,
+    // private auth: AuthService,
     private router: Router) {
 
       this.companyId = this.getUserData()?this.getUserData().companyid:'';
@@ -72,7 +75,7 @@ export class AuthService {
 
   signInWithEmailAndPassword(email: string, password:string) {
 
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result);
         this.setUserdata(result.user);
@@ -147,7 +150,7 @@ export class AuthService {
   x = null;
 
   createUserWithEmailAndPassword(email: string, password:string, phone: string,companyid: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         const user = {
           uid: result.user.uid,
@@ -159,7 +162,7 @@ export class AuthService {
         }
         this.dbs.database.ref('/user').child(user.uid).set(user);
         
-        this.afAuth.auth.sendPasswordResetEmail(email);
+        this.afAuth.sendPasswordResetEmail(email);
       }).catch((error) => {
         window.alert(error.message)
       })
@@ -186,7 +189,7 @@ export class AuthService {
 
   }
   reqResetPassword(email: string){
-    console.log(this.afAuth.auth.sendPasswordResetEmail(email));
+    console.log(this.afAuth.sendPasswordResetEmail(email));
   }
 
   // Error Module

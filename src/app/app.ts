@@ -1,7 +1,7 @@
 
 import { AngularFireList } from '@angular/fire/database';
 
-export interface User {
+export class User {
 
   uid: string;
   email: string;
@@ -24,6 +24,8 @@ export class Error {
   created: string;
   modified: string;
   sts: boolean;
+
+  companyid: number;
 
 }
 

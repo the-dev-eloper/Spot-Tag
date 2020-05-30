@@ -10,6 +10,7 @@ import {Observable, Subject, from} from 'rxjs';
 
 import { AuthService } from '../auth.service';
 import { DynamicScriptLoaderService } from '../dynamic-script-loader.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-error',
@@ -165,6 +166,8 @@ export interface PeriodicElement {
   errdesc: string;
   errsoln: string;
   errtype: string;
+
+  billdate: string;
 
   created: string;
   modified: string;

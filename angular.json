@@ -1,23 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false,
-    "typeRoots": [
-      "../node_modules/@types"
-    ],
-    "types" : [
-      "core-js"
-    ]
-  },
-  "exclude": [
-    "node_modules"
-  ],
+  
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",

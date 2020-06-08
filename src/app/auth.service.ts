@@ -29,7 +29,6 @@ export class AuthService {
   errorRef: AngularFireList<Error> = null;
   userRef: AngularFireList<User> ;
 
-
   constructor(private http: HttpClient,
     private dbs: AngularFireDatabase,
     private afAuth: AngularFireAuth,

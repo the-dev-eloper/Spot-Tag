@@ -31,7 +31,7 @@
     "rxjs": "~6.5.4",
     "saturn-datepicker": "^8.0.5",
     "tslib": "^1.13.0",
-    "xlsx": "^0.15.6",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

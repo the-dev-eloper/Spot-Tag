@@ -26,7 +26,7 @@
     "@capacitor/core": "^3.5.0",
     "ansi-html": "^0.0.9",
     "firebase": "^9.7.0",
-    "firebase-admin": "^10.1.0",
+    "firebase-admin": "^11.4.1",
     "moment": "^2.29.3",
     "rxjs": "~7.5.5",
     "saturn-datepicker": "^8.0.5",
